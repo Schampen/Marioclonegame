@@ -6,12 +6,8 @@ import java.awt.image.BufferStrategy;
 
 public class grafik extends Canvas {
 
-    int x,y;
-    int x1 = 400;
+    int x1 = 300;
     int y1 = 300;
-    double angle = 0;
-    int width = 800;
-    int height= 600;
     BufferStrategy bs;
 
     public void Grafik() {
@@ -37,28 +33,34 @@ public class grafik extends Canvas {
     }
 
     public void draw(Graphics g) {
-        x1 = 300;
-        g.fillRect(x1,300, 50,100);
-        g.drawLine(0,400,1000,400);
+        g.fillRect(x1,y1, 50,100);
+        g.drawLine(0,400,5000,400);
     }
 
 
 
     private class KL implements KeyListener {
         @Override
-        public void keyTyped(KeyEvent keyEvent) {
-            if (keyEvent.getKeyChar()=='a') {
-                x1-=20;
-            } else if (keyEvent.getKeyChar()=='d') {
-                x1+=20;
-                getGraphics().drawRect(100,100,200,200);
-            }
+        public void keyTyped(KeyEvent e) {
 
         }
 
         @Override
         public void keyPressed(KeyEvent keyEvent) {
-
+            if (keyEvent.getKeyChar()=='a') {
+                x1-=5;
+                repaint();
+            } else if (keyEvent.getKeyChar()=='d') {
+                x1+=5;
+                repaint();
+            } else if (keyEvent.getKeyChar()=='w'){
+                for (int i = 0 ; i < 10 ; i++) {
+                    y1-=10;
+                }
+                for (int i = 0 ; i < 10 ; i++) {
+                    y1+=10;
+                }
+            }
 
         }
 
